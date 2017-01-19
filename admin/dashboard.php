@@ -54,7 +54,7 @@ include("../include/admin_master.php");
         <div class="row">
             <a href="admin_userwise_events.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box blue-bg">
+                    <div class="info-box red-bg">
                         <i class="fa fa-cloud-download"></i>
                         <div><h3><b>Userwise Events</b></h3></div>
                     </div><!--/.info-box-->
@@ -62,7 +62,7 @@ include("../include/admin_master.php");
 
             <a href="admin_add_event.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box brown-bg">
+                    <div class="info-box pink-bg">
                         <i class="fa fa-shopping-cart"></i>
                         <div><h3><b>Add Event</b></h3></div>
                     </div><!--/.info-box-->

@@ -61,11 +61,11 @@ echo "
             echo"<div class='row' id='container_disp'> ";
             while ($row = mysqli_fetch_assoc($result4)) {
                 //$summary = implode($row);
-                echo "<div class='col-xs-2'>
+                echo "<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
                 <div class='text-center'>
-                <form action='".htmlspecialchars($_SERVER["PHP_SELF"])."' method='post'>
+                <form action='".htmlspecialchars($_SERVER["PHP_SELF"])."' method='get'>
                     <input type='hidden' name='action' value='submit' />
-                    <input type='submit' name='submit' value='" . $row['eventname'] . "' id='folder_button' class='btn' onclick='location.href='admin_display_all.php';'>"
+                    <input type='submit' name='submit' value='" . $row['eventname'] . "' id='folder_button' class='btn btn-default btn-lg' onclick='location.href='admin_display_all.php';'>"
                     . "</form>
                 </div>
             </div>";
@@ -73,12 +73,12 @@ echo "
             echo "</div>";
         }
         else {
-            echo"<div class='container'> <div class='row'> ";
-            //include("../include/admin_upload.php");
-            echo "</div></div>";
-            echo "<br>";
-            echo"<div class='container'> <div class='row'> ";
-            $sql1 = "SELECT dm_id FROM dms_data_master WHERE event_id='$event_id' AND user_id='$user'";
+            //echo"<div class='container'> <div class='row'> ";
+            include("../include/admin_upload.php");
+            //echo "</div></div>";
+            //echo "<br>";
+            //echo"<div class='container'> <div class='row'> ";
+            $sql1 = "SELECT dm_id FROM dms_data_master WHERE event_id='$event_id' AND user_id='$user' AND active=0";
             $result1 = mysqli_query($db, $sql1);
             $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
             $dm_id = $row1['dm_id'];
@@ -86,17 +86,14 @@ echo "
             $retval3 = mysqli_query($db, $sql3);
             $count = 0;
             while ($row = mysqli_fetch_assoc($retval3)) {
-                if ($count == 5) {
-                    echo "<div class=col-xs-2></div>";
-                }
-                echo "<div class=col-xs-2><a href='../uploads/" . $row['filename'] . "'>
-                    <img  src='../uploads/" . $row['filename'] . "'class=img-responsive  />
+                echo "<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'><a href='../uploads/" . $row['filename'] . "'>
+                    <img  src='../uploads/" . $row['filename'] . "' height='150px' width='200px' />
+                    " . $row['displayname'] . "</a>
               </div>";
-                $count++;
             }
-            echo "</div></div>";
+            //echo "</div></div>";
         }
-        echo "</div>";
+        //echo "</div>";
 
         ?>
 
