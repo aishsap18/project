@@ -57,8 +57,20 @@ else{
         </div>
 
         <!--logo start-->
-        <a href="dashboard.php" class="logo">DMS <span class="lite">Admin</span></a>
+        <a href="dashboard.php" class="logo">DMS <span class="lite">User</span></a>
         <!--logo end-->
+
+        <div class="nav search-row" id="top_menu">
+            <!--  search form start -->
+            <ul class="nav top-menu">
+                <li>
+                    <form class="navbar-form">
+                        <input class="form-control" placeholder="Search" type="text">
+                    </form>
+                </li>
+            </ul>
+            <!--  search form end -->
+        </div>
 
         <div class="top-nav notification-row">
             <!-- notificatoin dropdown start-->
@@ -95,7 +107,7 @@ else{
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
                 <li class="">
-                    <a class="" href="../admin/dashboard.php">
+                    <a class="" href="../user/user_dashboard.php">
                         <i class="icon_house_alt"></i>
                         <span>Dashboard</span>
                     </a>
@@ -109,71 +121,55 @@ else{
                     </a>
                     <ul class="sub">
                         <?php
-                        $sql = "SELECT eventname FROM dms_event WHERE parent_id = 0 AND active=0";
-                        $result = mysqli_query($db,$sql);
-                        $count = 0;
-                        while($row = mysqli_fetch_assoc($result)) {
-                            $summary = implode($row);
+                        $sql1 = "SELECT event_id FROM dms_data_master WHERE user_id = '$userid'";
+                        $result1 = mysqli_query($db,$sql1);
 
-                            echo "<li><a>
-                                        <form action='admin_display_all.php' method='GET'>
+                        while($row1 = mysqli_fetch_assoc($result1)) {
+                            $curr_event = $row1['event_id'];
+                            $sql = "SELECT eventname FROM dms_event WHERE event_id = '$curr_event' AND parent_id = 0";
+                            $result = mysqli_query($db, $sql);
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $summary = implode($row);
+
+                                echo "<li><a>
+                                        <form action='../user/user_display_all.php' method='GET'>
                                             <input type='hidden' name='action' value='submit' id='temp'/>
-                                            <input type='submit' name='submit' value='".$summary."' id='side'/>"
-                                        ."</form>
+                                            <input type='submit' name='submit' value='" . $summary . "' id='side'/>"
+                                    . "</form>
                                   </a></li>";
+                            }
                         }
 
                         ?>
                     </ul>
                 </li>
-
-                <li>
-                    <a class="" href="../admin/admin_event_list.php">
-                        <i class="icon_piechart"></i>
-                        <span>Event List</span>
+                <li class="">
+                    <a class="" href="">
+                        <i class="icon_house_alt"></i>
+                        <span>Shared with me</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="">
+                        <i class="icon_house_alt"></i>
+                        <span>My Profile</span>
                     </a>
                 </li>
 
-                <li>
-                    <a class="" href="../admin/admin_user_list.php">
-                        <i class="icon_document_alt"></i>
-                        <span>User List</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="" href="../admin/admin_assign_event.php">
-                        <i class="icon_desktop"></i>
-                        <span>Assign Event</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="" href="../admin/admin_userwise_events.php">
-                        <i class="icon_table"></i>
-                        <span>Userwise Events</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="" href="../admin/admin_add_event.php">
-                        <i class="icon_documents_alt"></i>
-                        <span>Add Event</span>
-                    </a>
-                </li>
             </ul>
             <!-- sidebar menu end-->
         </div>
     </aside>
     <!--sidebar end-->
 
-<!-- javascripts -->
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<!-- nice scroll -->
-<script src="../js/jquery.scrollTo.min.js"></script>
-<script src="../js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
-<script src="../js/scripts.js"></script>
+    <!-- javascripts -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="../js/jquery.scrollTo.min.js"></script>
+    <script src="../js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
+    <script src="../js/scripts.js"></script>
     <script type="text/javascript" src="../js/jquery.fancybox.js"></script>
     <script type="text/javascript" src="../js/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="../js/jquery.fancybox-buttons.js"></script>

@@ -1,6 +1,5 @@
 <?php
-include("../include/admin_master.php");
-
+include("../include/user_master.php");
 $user = $_SESSION['user_id'];
 
 if (!empty($_GET['action'])) {
@@ -50,7 +49,7 @@ $count1 = mysqli_num_rows($result4);
                         <!--  search form start -->
                         <ul class='nav top-menu'>
                             <li>
-                                <form action='../include/admin_search.php' method='get' class='navbar-form'>
+                                <form action='../include/user_search.php' method='get' class='navbar-form'>
                                     <input type='hidden' name='userid' value='". $user."'>
                                     <input type='hidden' name='event' value='". $event_id."'>
                                     <input class='form-control' placeholder='Search' name='search_text' type='text'>
@@ -66,26 +65,28 @@ $count1 = mysqli_num_rows($result4);
                     <?php
                     if($count1!=0) {
                         echo "
-                        <form action='../admin/admin_add_event.php' method='post'>
+                        <form action='../user/user_add_event.php' method='post'>
                             <input type='hidden' name='event' value='" . $event_id . "'>
                             <input type='submit' class='btn btn-default btn-sm' value='Create Folder'>
                         </form>";
                     }
-                ?>
+                    ?>
                 </div>
             </div>
         </div>
-            <div class="row">
-                <div class="col-lg-12">
+            </div>
+        </div>
+        <div class="row">
                 <ol class="breadcrumb">
-                    <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
-                    <li><i class="fa fa-bars"><a href="admin_events.php"></i> Events</a></li>
+                    <li><i class="fa fa-home"></i><a href="user_dashboard.php"> Home</a></li>
+                    <li><i class="fa fa-bars"><a href="user_events.php"></i> Events</a></li>
                     <li><i class="fa fa-square"></i> <?php echo $eventname;?></li>
                 </ol>
-            </div>
-            </div>
+        </div>
         <!-- page start-->
-<?php
+
+        <?php
+
         if($count1!=0) {
             echo"<div class='row' id='container_disp'> ";
             while ($row = mysqli_fetch_assoc($result4)) {
@@ -120,12 +121,12 @@ $count1 = mysqli_num_rows($result4);
 
                 $ext = pathinfo($row['filename'] , PATHINFO_EXTENSION);
 
-                    $str = $row['displayname'];
-                    if (strlen($str) > 20) {
-                        $cut = substr($str, 0, 20);
-                        $cut = $cut . "...";
-                    } else
-                        $cut = $str;
+                $str = $row['displayname'];
+                if (strlen($str) > 20) {
+                    $cut = substr($str, 0, 20);
+                    $cut = $cut . "...";
+                } else
+                    $cut = $str;
 
                 if(in_array($ext,$extensions)) {
                     echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
@@ -139,12 +140,13 @@ $count1 = mysqli_num_rows($result4);
                     echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
                         <a class='txtEditor' href='http://localhost:8081/project/uploads/" . $row['filename'] . "'>
                             <img src='../img/docimg.png' height='150px' width='150px' />
-                        </a>
+                        </a><br>
                         <label>" . $cut . "</label>
                     </div>";
                 }
             }
             echo "</div>";
+
             //echo "</div></div>";
         }
         //echo "</div>";

@@ -64,7 +64,7 @@ else{
                             if(data)
                             {
                                 if(data=="staff")
-                                    window.location.href = "user/home.php";
+                                    window.location.href = "user/user_dashboard.php";
                                 else if(data=="hod")
                                     window.location.href = "admin/dashboard.php";
                             }

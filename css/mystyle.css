@@ -4,3 +4,15 @@
     padding-bottom:25px;
     width: 100%;
 }
+
+#side {
+    background-color: transparent;
+    border-color: transparent;
+    text-align: inherit;
+    color: #ffffff;
+    width: 100%;
+}
+
+#data {
+    margin-top: 50px;
+}

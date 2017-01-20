@@ -18,13 +18,35 @@ include("../include/admin_master.php");
                 <h3 class="page-header"><i class="fa fa fa-bars"></i> Events</h3>
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
-                    <li><i class="fa fa-bars"></i> Events</li>
+                    <li><i class="fa fa-bars"></i> Event List</li>
                 </ol>
             </div>
         </div>
         <!-- page start-->
 
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <table class="table table-striped input-lg">
+                <th>Sr. No.</th>
+                <th>Event Name</th>
+                <th>Description</th>
 
+                <?php
+
+                $sql = "SELECT * FROM dms_event WHERE parent_id = 0";
+                $result = mysqli_query($db,$sql);
+                $count=0;
+                while($row = mysqli_fetch_assoc($result)) {
+
+                    echo "<tr>
+            <td>".++$count."</td>
+            <td>".$row['eventname']."</td>
+            <td>".$row['description']."</td>
+        </tr>";
+                }
+
+                ?>
+            </table>
+        </div>
 
         <!-- page end-->
     </section>

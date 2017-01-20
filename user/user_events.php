@@ -1,11 +1,5 @@
 <?php
-include("../include/admin_master.php");
-if (isset($_POST['event'])) {
-    $eventid = $_POST['event'];
-}
-else{
-    $eventid = 0;
-}
+include("../include/user_master.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,27 +15,38 @@ else{
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa fa-bars"></i> Add Event</h3>
+                <h3 class="page-header"><i class="fa fa fa-bars"></i> Events</h3>
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
-                    <li><i class="fa fa-bars"></i> Add Event</li>
+                    <li><i class="fa fa-bars"></i> Events</li>
                 </ol>
             </div>
         </div>
         <!-- page start-->
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <?php
+        $sql1 = "SELECT event_id FROM dms_data_master WHERE user_id = '$userid'";
+        $result1 = mysqli_query($db,$sql1);
 
-            <form action="admin_add_event_action.php" method="post">
-                <label class="control-label input-lg"> Event Name : </label>
-                <input class="form-control input-lg m-bot15" type="text" name="event_name">
-                <label class="control-label input-lg"> Description : </label>
-                <input class="form-control input-lg m-bot15" type="text" name="description">
-                <?php echo "<input type='hidden' name='event' value='".$eventid."'>"; ?>
-                <input type="submit" class="btn btn-default btn-lg" value="Add Event" id="add_button" class="btn">
-            </form>
+        while($row1 = mysqli_fetch_assoc($result1)) {
+            $curr_event = $row1['event_id'];
+            $sql = "SELECT eventname FROM dms_event WHERE event_id = '$curr_event' AND parent_id = 0";
+            $result = mysqli_query($db, $sql);
 
-        </div>
+            while ($row = mysqli_fetch_assoc($result)) {
+                $summary = implode($row);
+
+                echo "<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
+                <div class='text-center'>
+                <form action='user_display_all.php' method='GET'>
+                    <input type='hidden' name='action' value='submit' id='temp'/>
+                    <input type='submit' name='submit' value='" . $summary . "' class='btn btn-default btn-lg' id='folder_button'>"
+                    . "</form>
+                    </div>
+                </div>";
+            }
+        }
+        ?>
 
         <!-- page end-->
     </section>
@@ -61,4 +66,3 @@ else{
 </section>
 <!-- container section end -->
 </html>
-

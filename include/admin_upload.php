@@ -10,21 +10,29 @@ if (isset($_POST['action'])) {
 
     $event_id = $row['event_id'];
 }
-
-       echo " <div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-        <form class='form-inline' action='".htmlspecialchars($_SERVER["PHP_SELF"])."' method='post' enctype='multipart/form-data'>
+?>
+   <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+        <form class='form-inline' action='' method='post' enctype='multipart/form-data'>
             <div class='form-group-sm'>
                 <input type='file' name='fileToUpload' class='file hidden'>
                 <div class='input-group-sm'>
-                    <input type='text' id='input_browse' class='form-control' disabled placeholder='Upload document' name='doc_name'>
-                    <button class='browse btn-sm' id='browse_button' type='button'>Browse</button>
-                    <input type='text' id='description' class='form-control' placeholder='Enter description' name='description'>
-                     <input class='btn' id='add_button' type='submit' value='Upload document' name='submit'>
+                    <div class='col-lg-2 col-md-2 col-sm-2 col-xs-6'>
+                        <input type='text' id='input_browse' class='form-control' disabled placeholder='Upload document' name='doc_name'>
+                    </div>
+                    <div class='col-lg-2 col-md-2 col-sm-2 col-xs-4'>
+                        <button class='browse btn btn-default' id='browse_button' type='button'>Browse</button>
+                    </div>
+                    <div class='col-lg-6 col-md-6 col-sm-6 col-xs-6'>
+                        <input type='text' class='form-control' id='description' placeholder='Enter description' name='description'>
+                    </div>
+                    <div class='col-lg-2 col-md-2 col-sm-2 col-xs-4'>
+                        <input class='btn btn-default' id='add_button' type='submit' value='Upload' name='submit'>
+                    </div>
                 </div>
             </div>
         </form>
-        </div>";
-?>
+        </div>
+
 
     <script type="text/javascript">
         $(document).on('click', '.browse', function(){
@@ -41,7 +49,7 @@ $user = $_SESSION['user_id'];
 
 $_SESSION['event_id'] = $event_id;
 
-if(!empty($_POST['description'])) {
+if(!empty($_POST['description']) && !empty($_FILES['fileToUpload']['name'])) {
 
     $description = $_POST['description'];
     //echo $event_id;
