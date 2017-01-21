@@ -26,6 +26,7 @@ else{
     <link rel="stylesheet" href="../css/jquery.fancybox.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../css/jquery.fancybox-buttons.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../css/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+    <link href="../css/image-picker.css" rel="stylesheet">
     <!--Custom CSS-->
     <link href="../css/mystyle.css" rel="stylesheet">
     <!-- bootstrap theme -->
@@ -195,6 +196,11 @@ else{
                 closeEffect	: 'elastic'
             });
         });
+    </script>
+    <script src="../js/image-picker.js"></script>
+    <script src="../js/image-picker.min.js"></script>
+    <script>
+        $("select").imagepicker();
     </script>
 </body>
 </html>

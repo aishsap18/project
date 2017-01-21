@@ -1,21 +1,14 @@
 <?php
 include("../include/admin_master.php");
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="css/style.css"/>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.ui.shake.js"></script>
-</head>
-
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="page-header"><i class="fa fa fa-bars"></i> Events</h3>
+                <a class="btn btn-default btn-lg" href="admin_share_event.php">Share Event</a>
+                <a class="btn btn-default btn-lg" href="admin_delete_event.php">Delete Event</a>
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
                     <li><i class="fa fa-bars"></i> Events</li>

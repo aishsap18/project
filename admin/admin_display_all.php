@@ -43,7 +43,7 @@ $count1 = mysqli_num_rows($result4);
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="page-header"><i class="fa fa fa-bars"></i> <?php echo $eventname;?></h3>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <?php
                     if($count1==0){
                         echo "<div class='nav search-row page-header' id='top_menu'>
@@ -59,6 +59,36 @@ $count1 = mysqli_num_rows($result4);
                         </ul>
                         <!--  search form end -->
                     </div>";
+                    }
+                    ?>
+                </div>
+                <div class="col-lg-2 page-header">
+                    <?php
+                    if($count1==0){
+                    echo "<form action='../admin/admin_share_file.php' method='get'>
+                            <input type='hidden' name='event' value='" . $event_id . "'>
+                            <input type='submit' class='btn btn-default btn-sm' value='Share File'>
+                        </form>";
+                    }
+                    ?>
+                </div>
+                <div class="col-lg-2 page-header">
+                    <?php
+                    if($count1==0){
+                        echo "<form action='../admin/admin_delete_file.php' method='get'>
+                            <input type='hidden' name='event' value='" . $event_id . "'>
+                            <input type='submit' class='btn btn-default btn-sm' value='Delete File'>
+                        </form>";
+                    }
+                    ?>
+                </div>
+                <div class="col-lg-2 page-header">
+                    <?php
+                    if($count1!=0){
+                        echo "<form action='../admin/admin_delete_sub_event.php' method='get'>
+                            <input type='hidden' name='event' value='" . $event_id . "'>
+                            <input type='submit' class='btn btn-default btn-sm' value='Delete Event'>
+                        </form>";
                     }
                     ?>
                 </div>

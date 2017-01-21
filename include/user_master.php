@@ -26,6 +26,7 @@ else{
     <link rel="stylesheet" href="../css/jquery.fancybox.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../css/jquery.fancybox-buttons.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../css/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+    <link href="../css/image-picker.css" rel="stylesheet">
     <!--Custom CSS-->
     <link href="../css/mystyle.css" rel="stylesheet">
     <!-- bootstrap theme -->
@@ -57,20 +58,10 @@ else{
         </div>
 
         <!--logo start-->
-        <a href="dashboard.php" class="logo">DMS <span class="lite">User</span></a>
+        <a href="../user/user_dashboard.php" class="logo">DMS <span class="lite">User</span></a>
         <!--logo end-->
 
-        <div class="nav search-row" id="top_menu">
-            <!--  search form start -->
-            <ul class="nav top-menu">
-                <li>
-                    <form class="navbar-form">
-                        <input class="form-control" placeholder="Search" type="text">
-                    </form>
-                </li>
-            </ul>
-            <!--  search form end -->
-        </div>
+
 
         <div class="top-nav notification-row">
             <!-- notificatoin dropdown start-->
@@ -121,7 +112,7 @@ else{
                     </a>
                     <ul class="sub">
                         <?php
-                        $sql1 = "SELECT event_id FROM dms_data_master WHERE user_id = '$userid'";
+                        $sql1 = "SELECT event_id FROM dms_data_master WHERE user_id = '$userid' AND active = 0";
                         $result1 = mysqli_query($db,$sql1);
 
                         while($row1 = mysqli_fetch_assoc($result1)) {
@@ -144,15 +135,17 @@ else{
                         ?>
                     </ul>
                 </li>
+
                 <li class="">
-                    <a class="" href="">
-                        <i class="icon_house_alt"></i>
+                    <a class="" href="../user/user_shared_with_me.php">
+                        <i class="icon_book"></i>
                         <span>Shared with me</span>
                     </a>
                 </li>
+
                 <li class="">
                     <a class="" href="">
-                        <i class="icon_house_alt"></i>
+                        <i class="icon_archive"></i>
                         <span>My Profile</span>
                     </a>
                 </li>
@@ -191,6 +184,11 @@ else{
                 closeEffect	: 'elastic'
             });
         });
+    </script>
+    <script src="../js/image-picker.js"></script>
+    <script src="../js/image-picker.min.js"></script>
+    <script>
+        $("select").imagepicker();
     </script>
 </body>
 </html>

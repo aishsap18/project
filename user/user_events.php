@@ -16,8 +16,10 @@ include("../include/user_master.php");
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="page-header"><i class="fa fa fa-bars"></i> Events</h3>
+                <a class="btn btn-default btn-lg" href="user_share_event.php">Share Event</a>
+                <a class="btn btn-default btn-lg" href="user_delete_event.php">Delete Event</a>
                 <ol class="breadcrumb">
-                    <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
+                    <li><i class="fa fa-home"></i><a href="user_dashboard.php"> Home</a></li>
                     <li><i class="fa fa-bars"></i> Events</li>
                 </ol>
             </div>
@@ -25,7 +27,7 @@ include("../include/user_master.php");
         <!-- page start-->
 
         <?php
-        $sql1 = "SELECT event_id FROM dms_data_master WHERE user_id = '$userid'";
+        $sql1 = "SELECT event_id FROM dms_data_master WHERE user_id = '$userid' AND active = 0";
         $result1 = mysqli_query($db,$sql1);
 
         while($row1 = mysqli_fetch_assoc($result1)) {

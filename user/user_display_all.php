@@ -61,6 +61,36 @@ $count1 = mysqli_num_rows($result4);
                     }
                     ?>
                 </div>
+                <div class="col-lg-2 page-header">
+                    <?php
+                    if($count1==0){
+                        echo "<form action='../user/user_share_file.php' method='get'>
+                            <input type='hidden' name='event' value='" . $event_id . "'>
+                            <input type='submit' class='btn btn-default btn-sm' value='Share File'>
+                        </form>";
+                    }
+                    ?>
+                </div>
+                <div class="col-lg-2 page-header">
+                    <?php
+                    if($count1==0){
+                        echo "<form action='../user/user_delete_file.php' method='get'>
+                            <input type='hidden' name='event' value='" . $event_id . "'>
+                            <input type='submit' class='btn btn-default btn-sm' value='Delete File'>
+                        </form>";
+                    }
+                    ?>
+                </div>
+                <div class="col-lg-2 page-header">
+                    <?php
+                    if($count1!=0){
+                        echo "<form action='../user/user_delete_sub_event.php' method='get'>
+                            <input type='hidden' name='event' value='" . $event_id . "'>
+                            <input type='submit' class='btn btn-default btn-sm' value='Delete Event'>
+                        </form>";
+                    }
+                    ?>
+                </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 page-header">
                     <?php
                     if($count1!=0) {
