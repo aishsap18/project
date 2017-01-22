@@ -1,5 +1,17 @@
 <?php
 include("../include/admin_master.php");
+$query  = "SELECT * FROM dms_users";
+$query1 = "SELECT * FROM dms_data";
+$query2 = "SELECT * FROM dms_event WHERE parent_id=0";
+$query3 = "SELECT * FROM dms_event WHERE parent_id NOT IN (0)";
+$result = mysqli_query($db, $query);
+$result1 = mysqli_query($db, $query1);
+$result2 = mysqli_query($db, $query2);
+$result3 = mysqli_query($db, $query3);
+$users=mysqli_num_rows($result);
+$events=mysqli_num_rows($result2);
+$files=mysqli_num_rows($result1);
+$folders=mysqli_num_rows($result3);
 
 ?>
 
@@ -15,36 +27,72 @@ include("../include/admin_master.php");
             </div>
         </div>
         <!-- page start-->
+        <div class="row">
+            <span class="label label-success">YOUR SYSTEM STATISTICS</span>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="info-box linkedin-bg">
+                    <i class="fa fa-cube"></i>
+                    <div class="count"><?php echo $events?></div>
+                    <div>Events Added</div>
+                </div><!--/.info-box-->
+            </div>
 
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="info-box brown-bg">
+                    <i class="fa fa-users"></i>
+                    <div class="count"><?php echo $users?></div>
+                    <div >Users Using</div>
+                </div><!--/.info-box-->
+            </div><!--/.col-->
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="info-box green-bg">
+                    <i class="fa fa-file"></i>
+                    <div class="count"><?php echo $files?></div>
+                    <div>Files Uploaded</div>
+                </div><!--/.info-box-->
+            </div><!--/.col-->
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="info-box dark-bg">
+                    <i class="fa fa-folder"></i>
+                    <div class="count"><?php echo $folders?></div>
+                    <div>Folders Created</div>
+                </div><!--/.info-box-->
+            </div><!--/.col-->
+        </div>
+        <div class="row">
+            <span class="label label-success">SELECT YOUR OPERATION</span>
+        </div>
+        <br>
         <div class="row">
             <a href="admin_events.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box blue-bg">
-                        <i class="fa fa-cloud-download"></i>
+                    <div class="info-box-2 yellow-bg">
                         <div><h3><b>Events</b></h3></div>
                     </div><!--/.info-box-->
                 </div><!--/.col--></a>
 
             <a href="admin_event_list.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box brown-bg">
-                        <i class="fa fa-shopping-cart"></i>
+                    <div class="info-box-2 brown-bg">
                         <div><h3><b>Event List</b></h3></div>
                     </div><!--/.info-box-->
                 </div><!--/.col--></a>
 
             <a href="admin_user_list.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box dark-bg">
-                        <i class="fa fa-thumbs-o-up"></i>
+                    <div class="info-box-2 dark-bg">
                         <div><h3><b>User List</b></h3></div>
                     </div><!--/.info-box-->
                 </div><!--/.col--></a>
 
             <a href="admin_assign_event.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box green-bg">
-                        <i class="fa fa-cubes"></i>
+                    <div class="info-box-2 green-bg">
                         <div><h3><b>Assign Event</b></h3></div>
                     </div><!--/.info-box-->
                 </div><!--/.col--></a>
@@ -54,16 +102,14 @@ include("../include/admin_master.php");
         <div class="row">
             <a href="admin_userwise_events.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box red-bg">
-                        <i class="fa fa-cloud-download"></i>
+                    <div class="info-box-2 red-bg">
                         <div><h3><b>Userwise Events</b></h3></div>
                     </div><!--/.info-box-->
                 </div><!--/.col--></a>
 
             <a href="admin_add_event.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box pink-bg">
-                        <i class="fa fa-shopping-cart"></i>
+                    <div class="info-box-2 pink-bg">
                         <div><h3><b>Add Event</b></h3></div>
                     </div><!--/.info-box-->
                 </div><!--/.col--></a>
@@ -72,18 +118,5 @@ include("../include/admin_master.php");
 
         <!-- page end-->
     </section>
-</section>
-<!--main content end-->
-<div class="text-right">
-    <div class="credits">
-        <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-
-        <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-     --></div>
-</div>
 </section>
 <!-- container section end -->

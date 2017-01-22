@@ -24,8 +24,8 @@ else{
     <link rel="shortcut icon" href="img/favicon.png">
 
     <title>Login | Document Management System</title>
-    <script src="js/jquery-3.1.1.min.js"></script>
-
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap theme -->
@@ -42,7 +42,9 @@ else{
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery.ui.shake.js"></script>
     <![endif]-->
     <script>
         $(document).ready(function() {
@@ -70,7 +72,7 @@ else{
                             }
                             else
                             {
-                                $('#box').shake();
+                                $('#login-wrap').shake();
                                 $("#login").val('Login');
                                 $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid username and password. ");
                             }
@@ -125,7 +127,8 @@ else{
        --> </div>
     </div>
 </div>
-
+<script src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 </body>
 </html>
