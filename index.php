@@ -63,18 +63,21 @@ else{
                         cache: false,
                         beforeSend: function(){ $("#login").val('Connecting...');},
                         success: function(data){
+                            $("#login").val('Login');
                             if(data)
                             {
+
                                 if(data=="staff")
                                     window.location.href = "user/user_dashboard.php";
                                 else if(data=="hod")
                                     window.location.href = "admin/dashboard.php";
+                                else if(data=="deactive"){
+                                    $("#error").html("<span style='color:#cc0000'>Error:</span> Your account is not activated.");
+                                }
                             }
                             else
                             {
-                                $('#login-wrap').shake();
-                                $("#login").val('Login');
-                                $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid username and password. ");
+                                $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid username or password");
                             }
                         }
                     });
@@ -92,8 +95,9 @@ else{
 
 <div>
 
-    <form class="login-form" action="" method="POST">
+    <div class="login-form">
         <div class="login-wrap">
+            <form action="" method="POST">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_profile"></i></span>
@@ -108,25 +112,15 @@ else{
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
             <input class="btn btn-primary btn-lg btn-block" type="submit" id="login" value="Login">
-            <button class="btn btn-info btn-lg btn-block">Signup</button>
-
+                <br>
             <span class='msg'></span>
 
             <div id="error"></div>
+            <div id="success"></div>
+            </form>
+            <button onclick="window.location = 'signup.php';" class="btn btn-info btn-lg btn-block">Signup</button>
         </div>
-    </form>
-    <div class="text-right">
-        <div class="credits">
-            <!--
-                All the links in the footer should remain intact.
-                You can delete the links only if you purchased the pro version.
-                Licensing information: https://bootstrapmade.com/license/
-                Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-
-            <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-       --> </div>
     </div>
-</div>
 <script src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
