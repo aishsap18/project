@@ -27,7 +27,7 @@ $event_select = $row1['event_id'];
 $sql2 = "INSERT INTO dms_data_master (user_id,event_id) VALUES ( '$user_select','$event_select' )";
 $result2 = mysqli_query( $db,$sql2 );
 
-$sql = "SELECT * FROM dms_event WHERE parent_id = '$event_select' AND active = 0";
+$sql = "SELECT * FROM dms_event WHERE active = 0";
 
 $r = mysqli_query($db,$sql);
 $rows = array();
@@ -63,24 +63,5 @@ function buildTree(array $elements, $parentId, $db, $user_select) {
 
 $result = buildTree($rows,$event_select,$db,$user_select);
 
-echo json_encode(array('result'=>$result));
-/*
-$count=0;
-while($count==0){
-    $sql4 = "SELECT * FROM dms_event WHERE parent_id = '$event_select' and active = 0";
-    $result4 = mysqli_query( $db,$sql4 );
-
-    $count1 = mysqli_num_rows($result4);
-    if($count1!=0){
-        while($row = mysqli_fetch_assoc($result4)){
-            $event_select = $row['event_id'];
-            $sql3 = "INSERT INTO dms_data_master (user_id,event_id) VALUES ( '$user_select','$event_select' )";
-            $result3 = mysqli_query( $db,$sql3 );
-        }
-    }else{
-        $count = 1;
-    }
-}
-*/
-//echo "<script>alert('User Assigned'); location.href=\"../admin/admin_userwise_events.php\"; </script>";
+echo "<script>alert('User Assigned'); location.href=\"../admin/admin_userwise_events.php\"; </script>";
 ?>

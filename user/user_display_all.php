@@ -93,13 +93,11 @@ $count1 = mysqli_num_rows($result4);
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 page-header">
                     <?php
-                    if($count1!=0) {
                         echo "
                         <form action='../user/user_add_event.php' method='post'>
                             <input type='hidden' name='event' value='" . $event_id . "'>
                             <input type='submit' class='btn btn-default btn-sm' value='Create Folder'>
                         </form>";
-                    }
                     ?>
                 </div>
             </div>
@@ -121,14 +119,20 @@ $count1 = mysqli_num_rows($result4);
             echo"<div class='row' id='container_disp'> ";
             while ($row = mysqli_fetch_assoc($result4)) {
                 //$summary = implode($row);
-                echo "<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
+                $temp = $row['event_id'];
+                $sql2 = "SELECT * FROM dms_data_master WHERE event_id = '$temp' AND user_id='$user' AND active = 0";
+                $result2 = mysqli_query($db,$sql2);
+
+                while($row1 = mysqli_fetch_assoc($result2)) {
+                    echo "<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
                 <div class='text-center'>
-                <form action='".htmlspecialchars($_SERVER["PHP_SELF"])."' method='get'>
+                <form action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='get'>
                     <input type='hidden' name='action' value='submit' />
                     <input type='submit' name='submit' value='" . $row['eventname'] . "' id='folder_button' class='btn btn-default btn-lg' onclick='location.href='admin_display_all.php';'>"
-                    . "</form>
+                        . "</form>
                 </div>
             </div>";
+                }
             }
             echo "</div>";
         }
