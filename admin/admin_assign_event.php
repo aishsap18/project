@@ -31,7 +31,7 @@ include("../include/admin_master.php");
                     <label>Select User :</label>
                     <?php
 
-                    $sql = "SELECT * FROM dms_users WHERE role='staff'";
+                    $sql = "SELECT * FROM dms_users WHERE role='staff' AND status = 1";
                     $result = mysqli_query($db,$sql);
 
                     ?>
