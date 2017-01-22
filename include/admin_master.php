@@ -58,7 +58,7 @@ else{
         </div>
 
         <!--logo start-->
-        <a href="dashboard.php" class="logo">DMS <span class="lite">Admin</span></a>
+        <a href="../admin/dashboard.php" class="logo">DMS <span class="lite">Admin</span></a>
         <!--logo end-->
 
         <div class="top-nav notification-row">
