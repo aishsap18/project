@@ -5,25 +5,29 @@ include("../include/user_master.php");
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="css/style.css"/>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.ui.shake.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.ui.shake.js"></script>
 </head>
 
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa fa-bars"></i> Events</h3>
-                <a class="btn btn-default btn-lg" href="user_share_event.php">Share Event</a>
-                <a class="btn btn-default btn-lg" href="user_delete_event.php">Delete Event</a>
+            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">
+                <h3 class="page-header"><i class="fa fa fa-cube"></i> Events</h3>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                <a class="btn btn-default btn-md" href="user_share_event.php">Share Event</a>
+                <a class="btn btn-default btn-md" href="user_delete_event.php">Delete Event</a>
+            </div>
+        </div>
+            <div class="row">
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="user_dashboard.php"> Home</a></li>
                     <li><i class="fa fa-bars"></i> Events</li>
                 </ol>
             </div>
-        </div>
         <!-- page start-->
 
         <?php
@@ -53,18 +57,4 @@ include("../include/user_master.php");
         <!-- page end-->
     </section>
 </section>
-<!--main content end-->
-<div class="text-right">
-    <div class="credits">
-        <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-
-        <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        --> </div>
-</div>
-</section>
-<!-- container section end -->
 </html>

@@ -14,9 +14,9 @@ else{
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keyword" content="">
     <link rel="shortcut icon" href="../img/favicon.png">
 
     <title>Document Management System for Organization</title>
@@ -27,6 +27,7 @@ else{
     <link rel="stylesheet" href="../css/jquery.fancybox-buttons.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../css/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
     <link href="../css/image-picker.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css"/>
     <!--Custom CSS-->
     <link href="../css/mystyle.css" rel="stylesheet">
     <!-- bootstrap theme -->
@@ -42,7 +43,6 @@ else{
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.js"></script>
-    <script src="../js/respond.min.js"></script>
     <script src="../js/lte-ie7.js"></script>
     <![endif]-->
 </head>
@@ -170,9 +170,11 @@ else{
 
 <!-- javascripts -->
 <script src="../js/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <!-- nice scroll -->
 <script src="../js/jquery.scrollTo.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="../js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
 <script src="../js/scripts.js"></script>
     <script type="text/javascript" src="../js/jquery.fancybox.js"></script>
@@ -180,25 +182,30 @@ else{
     <script type="text/javascript" src="../js/jquery.fancybox-buttons.js"></script>
     <script type="text/javascript" src="../js/jquery.fancybox-media.js"></script>
     <script type="text/javascript" src="../js/jquery.fancybox-thumbs.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script src="../js/image-picker.js"></script>
+
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $(".various").fancybox({
                 maxWidth	: 800,
                 maxHeight	: 600,
-                minHeight   : 300,
-                minWidth    : 500,
+                minHeight   : 420,
+                minWidth    : 320,
                 fitToView	: true,
-                width		: '70%',
-                height		: '70%',
+                width		: '50%',
+                height		: '50%',
                 autoSize	: true,
                 closeClick	: true,
                 openEffect	: 'elastic',
                 closeEffect	: 'elastic'
             });
         });
+        $(document).ready(function(){
+            $('#myTable').DataTable()
+        });
     </script>
-    <script src="../js/image-picker.js"></script>
-    <script src="../js/image-picker.min.js"></script>
     <script>
         $("select").imagepicker();
     </script>

@@ -5,10 +5,16 @@ include("../include/admin_master.php");
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">
+                <h3 class="page-header"><i class="fa fa fa-cube"></i> Events</h3>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                <a class="btn btn-default btn-md" href="admin_share_event.php">Share Event</a>
+                <a class="btn btn-default btn-md" href="admin_delete_event.php">Delete Event</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa fa-bars"></i> Events</h3>
-                <a class="btn btn-default btn-lg" href="admin_share_event.php">Share Event</a>
-                <a class="btn btn-default btn-lg" href="admin_delete_event.php">Delete Event</a>
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
                     <li><i class="fa fa-bars"></i> Events</li>

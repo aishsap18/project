@@ -39,14 +39,12 @@ $count1 = mysqli_num_rows($result4);
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="page-header"><i class="fa fa fa-bars"></i> <?php echo $eventname;?></h3>
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-4">
+                    <h3 class="page-header"><i class="fa fa fa-cube"></i><?php echo $eventname;?></h3>
                 </div>
-                <div class="col-lg-4">
                     <?php
-                    if($count1==0){
-                        echo "<div class='nav search-row page-header' id='top_menu'>
+                        echo " <div class=\"col-lg-4 col-md-4 col-sm-2 col-xs-6 \">
+                                <div class='nav search-row page-header' id='top_menu'>
                         <!--  search form start -->
                         <ul class='nav top-menu'>
                             <li>
@@ -58,143 +56,158 @@ $count1 = mysqli_num_rows($result4);
                             </li>
                         </ul>
                         <!--  search form end -->
-                    </div>";
-                    }
+                    </div>
+                    </div> ";
                     ?>
-                </div>
-                <div class="col-lg-2 page-header">
-                    <?php
-                    if($count1==0){
-                    echo "<form action='../admin/admin_share_file.php' method='get'>
-                            <input type='hidden' name='event' value='" . $event_id . "'>
-                            <input type='submit' class='btn btn-default btn-sm' value='Share File'>
-                        </form>";
-                    }
-                    ?>
-                </div>
-                <div class="col-lg-2 page-header">
-                    <?php
-                    if($count1==0){
-                        echo "<form action='../admin/admin_delete_file.php' method='get'>
-                            <input type='hidden' name='event' value='" . $event_id . "'>
-                            <input type='submit' class='btn btn-default btn-sm' value='Delete File'>
-                        </form>";
-                    }
-                    ?>
-                </div>
-                <div class="col-lg-2 page-header">
-                    <?php
-                    if($count1!=0){
-                        echo "<form action='../admin/admin_delete_sub_event.php' method='get'>
-                            <input type='hidden' name='event' value='" . $event_id . "'>
-                            <input type='submit' class='btn btn-default btn-sm' value='Delete Event'>
-                        </form>";
-                    }
-                    ?>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 page-header">
-                    <?php
-                        echo "
-                        <form action='../admin/admin_add_event.php' method='post'>
-                            <input type='hidden' name='event' value='" . $event_id . "'>
-                            <input type='submit' class='btn btn-default btn-sm' value='Create Folder'>
-                        </form>";
-                ?>
-                </div>
-            </div>
         </div>
             <div class="row">
                 <div class="col-lg-12">
-                <ol class="breadcrumb">
-                    <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
-                    <li><i class="fa fa-bars"><a href="admin_events.php"></i> Events</a></li>
-                    <li><i class="fa fa-square"></i> <?php echo $eventname;?></li>
-                </ol>
-            </div>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
+                        <li><i class="fa fa-bars"><a href="admin_events.php"></i> Events</a></li>
+                        <li><i class="fa fa-square"></i> <?php echo $eventname;?></li>
+                    </ol>
+                 </div>
             </div>
         <!-- page start-->
-<?php
-        if($count1!=0) {
-            echo"<div class='row' id='container_disp'> ";
-            while ($row = mysqli_fetch_assoc($result4)) {
-                //$summary = implode($row);
-                echo "<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-                <div class='text-center'>
-                <form action='".htmlspecialchars($_SERVER["PHP_SELF"])."' method='get'>
-                    <input type='hidden' name='action' value='submit' />
-                    <input type='submit' name='submit' value='" . $row['eventname'] . "' id='folder_button' class='btn btn-default btn-lg' onclick='location.href='admin_display_all.php';'>"
-                    . "</form>
-                </div>
-            </div>";
-            }
-            echo "</div>";
-        }
-        else {
-            echo"<div class='row'> ";
-            include("../include/admin_upload.php");
-            echo "</div>";
-            echo"<div class='row'> ";
-            //echo "<br>";
-            //echo"<div class='container'> <div class='row'> ";
-            $sql1 = "SELECT dm_id FROM dms_data_master WHERE event_id='$event_id' AND user_id='$user' AND active=0";
-            $result1 = mysqli_query($db, $sql1);
-            $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
-            $dm_id = $row1['dm_id'];
-            $sql3 = "SELECT * FROM dms_data WHERE dm_id='$dm_id' AND active=0";
-            $retval3 = mysqli_query($db, $sql3);
-            $count = 0;
-            $extensions= array('jpg','jpeg','png','gif','bmp','JPG','JPEG','PNG','GIF','BMP');
-            while ($row = mysqli_fetch_assoc($retval3)) {
 
-                $ext = pathinfo($row['filename'] , PATHINFO_EXTENSION);
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading tab-bg-info">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#profile">
+                                    <i class="icon-user"></i>
+                                    Folders
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#edit-profile">
+                                    <i class="icon-envelope"></i>
+                                    Files
+                                </a>
+                            </li>
+                        </ul>
+                    </header>
 
-                    $str = $row['displayname'];
-                    if (strlen($str) > 20) {
-                        $cut = substr($str, 0, 20);
-                        $cut = $cut . "...";
-                    } else
-                        $cut = $str;
+                    <div class="">
+                        <div class="tab-content">
+                            <!-- profile -->
+                            <div id="profile" class="tab-pane active">
+                                <section class="panel">
+                                    <div class="panel-body bio-graph-info">
+                                        <header class="row">
+                                            <?php
+                                                echo "<div class=\"col-lg-1 col-md-2 col-sm-2 col-xs-4\">
+                                                        <form action='../admin/admin_delete_sub_event.php' method='get'>
+                                                        <input type='hidden' name='event' value='" . $event_id . "'>
+                                                        <input type='submit' class='btn btn-default btn-sm' value='Delete Folder'>
+                                                        </form>
+                                                      </div>";
 
-                if(in_array($ext,$extensions)) {
-                    echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-                        <a rel='gallery1' class='various' href='http://localhost:8081/project/uploads/" . $row['filename'] . "'>
-                            <img  src='../uploads/" . $row['filename'] . "' height='150px' width='200px' />
-                        </a><br>
-                        <label>" . $cut . "</label>
-                      </div>";
-                }else{
+                                                echo "<div class=\"col-lg-1 col-md-2 col-sm-2 col-xs-4\">
+                                                        <form action='../admin/admin_add_event.php' method='post'>
+                                                        <input type='hidden' name='event' value='" . $event_id . "'>
+                                                        <input type='submit' class='btn btn-default btn-sm' value='Create Folder'>
+                                                        </form>
+                                                        </div>";
+                                            ?>
+                                        </header>
+                                        <br>
+                                        <div class="">
+                                            <?php
+                                            //if($count1!=0) {
+                                            echo"<div class='row' id='container_disp'> ";
+                                            while ($row = mysqli_fetch_assoc($result4)) {
+                                                //$summary = implode($row);
+                                                echo "<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
+                                                      <div class='text-center'>
+                                                         <form action='".htmlspecialchars($_SERVER["PHP_SELF"])."' method='get'>
+                                                         <input type='hidden' name='action' value='submit' />
+                                                         <input type='submit' name='submit' value='" . $row['eventname'] . "' id='folder_button' class='btn btn-default btn-lg' onclick='location.href='admin_display_all.php';'>" . "</form>
+                                                       </div>
+                                                       </div>";
+                                            }
+                                            echo "</div>";
+                                            ?>
+                                        </div>
+                                    </section>
+                                </div>
+                            <!-- edit-profile -->
+                            <div id="edit-profile" class="tab-pane">
+                                <section class="panel">
+                                    <div class="panel-body bio-graph-info">
+                                        <?php
+                                            echo"<section class=\"\">
+                                                <header class=\"row\">
+                                                  <div class=\"col-lg-1 col-md-2 col-sm-2 col-xs-4\">
+                                                        <form action='../admin/admin_share_file.php' method='get'>
+                                                        <input type='hidden' name='event' value='\" . $event_id . \"'>
+                                                        <input type='submit' class='btn btn-default btn-sm' value='Share File'>
+                                                    </form>
+                                                    </div>
+                                                <div class=\"col-lg-1 col-md-2 col-sm-2 col-xs-4\">
+                                                    <form action='../admin/admin_delete_file.php' method='get'>
+                                                        <input type='hidden' name='event' value='\" . $event_id . \"'>
+                                                        <input type='submit' class='btn btn-default btn-sm' value='Delete File'>
+                                                    </form>
+                                                     </div>
+                                                </header>
+                                                <br>
+                                                
+                                                <div class='row'> ";
+                                                    include("../include/admin_upload.php");
+                                                    echo "</div>";
+                                                    echo"<div class='row'> ";
+                                                    //echo "<br>";
+                                                    //echo"<div class='container'> <div class='row'> ";
+                                                    $sql1 = "SELECT dm_id FROM dms_data_master WHERE event_id='$event_id' AND user_id='$user' AND active=0";
+                                                    $result1 = mysqli_query($db, $sql1);
+                                                    $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
+                                                    $dm_id = $row1['dm_id'];
+                                                    $sql3 = "SELECT * FROM dms_data WHERE dm_id='$dm_id' AND active=0";
+                                                    $retval3 = mysqli_query($db, $sql3);
+                                                    $count = 0;
+                                                    $extensions= array('jpg','jpeg','png','gif','bmp','JPG','JPEG','PNG','GIF','BMP');
+                                                    while ($row = mysqli_fetch_assoc($retval3)) {
 
-                    echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-                        <a class='txtEditor' href='http://localhost:8081/project/uploads/" . $row['filename'] . "'>
-                            <img src='../img/docimg.png' height='150px' width='150px' />
-                        </a>
-                        <label>" . $cut . "</label>
-                    </div>";
-                }
-            }
-            echo "</div>";
-            //echo "</div></div>";
-        }
-        //echo "</div>";
+                                                        $ext = pathinfo($row['filename'] , PATHINFO_EXTENSION);
 
-        ?>
+                                                        $str = $row['displayname'];
+                                                        if (strlen($str) > 20) {
+                                                            $cut = substr($str, 0, 20);
+                                                            $cut = $cut . "...";
+                                                        } else
+                                                            $cut = $str;
 
-
-        <!-- page end-->
-    </section>
-</section>
-<!--main content end-->
-<div class="text-right">
-    <div class="credits">
-        <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-
-        <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    --> </div>
-</div>
-</section>
-<!-- container section end -->
-</body>
+                                                        if(in_array($ext,$extensions)) {
+                                                            echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
+                                                        <a rel='gallery1' class='various img-responsive' href='http://localhost:60/finalproject/uploads/" . $row['filename'] . "'>
+                                                            <img  src='../uploads/" . $row['filename'] . "' height='150px' width='200px' />
+                                                        </a><br>
+                                                        <label>" . $cut . "</label>
+                                                      </div>";
+                                                        }
+                                                        else{
+                                                            echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
+                                                            <a class='txtEditor' href='http://localhost:60/finalproject/uploads/" . $row['filename'] . "'>
+                                                                <img src='../img/docimg.png' height='150px' width='150px' />
+                                                            </a>
+                                                            <label>" . $cut . "</label>
+                                                        </div>";
+                                                            }
+                                                        }
+                                                        echo "</div>";
+                                                        ?>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </body>

@@ -126,7 +126,7 @@ else {
 
         if(in_array($ext,$extensions)) {
             echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-                        <a rel='gallery1' class='various' href='http://localhost:8081/project/uploads/" . $row['filename'] . "'>
+                        <a rel='gallery1' class='various' href='http://localhost:8081/finalproject/uploads/" . $row['filename'] . "'>
                             <img  src='../uploads/" . $row['filename'] . "' height='150px' width='200px' />
                         </a><br>
                         <label>" . $cut . "</label>
@@ -134,7 +134,7 @@ else {
         }else{
 
             echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-                        <a class='txtEditor' href='http://localhost:8081/project/uploads/" . $row['filename'] . "'>
+                        <a class='txtEditor' href='http://localhost:8081/finalproject/uploads/" . $row['filename'] . "'>
                             <img src='../img/docimg.png' height='150px' width='150px' />
                         </a><br>
                         <label>" . $cut . "</label>

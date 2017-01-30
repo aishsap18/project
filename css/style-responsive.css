@@ -2,7 +2,7 @@
 
 }
 
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 320px) and (max-width: 979px) {
 
     .inbox-wrapper .inbox-left {
         width: 30%;
@@ -24,7 +24,7 @@
 
     #sidebar {
         height: auto;
-        overflow: hidden;
+        overflow-y: scroll;
         position: absolute;
         width: 100%;
         z-index: 1001;
@@ -230,7 +230,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 320px) {
 
     .notification-row,.task_notificatoin_bar, .search-row,.knob-charts, .dont-show , .inbox-head .sr-input, .inbox-head .sr-btn{
         display: none;

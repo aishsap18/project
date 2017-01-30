@@ -40,12 +40,13 @@ $count1 = mysqli_num_rows($result4);
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="page-header"><i class="fa fa fa-bars"></i> <?php echo $eventname;?></h3>
+                    <h3 class="page-header"><?php echo $eventname;?></h3>
                 </div>
-                <div class="col-lg-6">
                     <?php
                     if($count1==0){
-                        echo "<div class='nav search-row page-header' id='top_menu'>
+                        echo "
+                        <div class=\"col-lg-4 col-md-4 col-sm-6 col-xs-4 \">
+                        <div class='nav search-row page-header' id='top_menu'>
                         <!--  search form start -->
                         <ul class='nav top-menu'>
                             <li>
@@ -57,53 +58,54 @@ $count1 = mysqli_num_rows($result4);
                             </li>
                         </ul>
                         <!--  search form end -->
+                    </div>
                     </div>";
                     }
                     ?>
-                </div>
-                <div class="col-lg-2 page-header">
                     <?php
                     if($count1==0){
-                        echo "<form action='../user/user_share_file.php' method='get'>
+                        echo "<div class=\"col-lg-2 col-md-2 col-sm-3 col-xs-3 page-header\">
+                            <form action='../user/user_share_file.php' method='get'>
                             <input type='hidden' name='event' value='" . $event_id . "'>
-                            <input type='submit' class='btn btn-default btn-sm' value='Share File'>
-                        </form>";
+                            <input type='submit' class='btn btn-default btn-md' value='Share File'>
+                        </form>
+                        </div>";
                     }
                     ?>
-                </div>
-                <div class="col-lg-2 page-header">
                     <?php
                     if($count1==0){
-                        echo "<form action='../user/user_delete_file.php' method='get'>
+                        echo "<div class=\"col-lg-2 col-md-2 col-sm-3 col-xs-3 page-header\">
+                                <form action='../user/user_delete_file.php' method='get'>
                             <input type='hidden' name='event' value='" . $event_id . "'>
-                            <input type='submit' class='btn btn-default btn-sm' value='Delete File'>
-                        </form>";
+                            <input type='submit' class='btn btn-default btn-md' value='Delete File'>
+                        </form>
+                        </div>";
                     }
                     ?>
-                </div>
-                <div class="col-lg-2 page-header">
+
                     <?php
                     if($count1!=0){
-                        echo "<form action='../user/user_delete_sub_event.php' method='get'>
+                        echo "
+                            <div class=\"col-lg-2 col-md-2 col-sm-3 col-xs-3 page-header\">
+                            <form action='../user/user_delete_sub_event.php' method='get'>
                             <input type='hidden' name='event' value='" . $event_id . "'>
-                            <input type='submit' class='btn btn-default btn-sm' value='Delete Event'>
-                        </form>";
+                            <input type='submit' class='btn btn-default btn-md' value='Delete Event'>
+                        </form>
+                        </div>";
                     }
                     ?>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 page-header">
                     <?php
-                        echo "
+                        echo "<div class=\"col-lg-2 col-md-2 col-sm-3 col-xs-3 page-header\">
                         <form action='../user/user_add_event.php' method='post'>
                             <input type='hidden' name='event' value='" . $event_id . "'>
-                            <input type='submit' class='btn btn-default btn-sm' value='Create Folder'>
-                        </form>";
+                            <input type='submit' class='btn btn-default btn-md' value='Create Folder'>
+                        </form>
+                        </div>";
                     ?>
-                </div>
+
             </div>
         </div>
-            </div>
-        </div>
+
         <div class="row">
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="user_dashboard.php"> Home</a></li>
@@ -164,7 +166,7 @@ $count1 = mysqli_num_rows($result4);
 
                 if(in_array($ext,$extensions)) {
                     echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-                        <a rel='gallery1' class='various' href='http://localhost:8081/project/uploads/" . $row['filename'] . "'>
+                        <a rel='gallery1' class='various' href='http://localhost:8081/finalproject/uploads/" . $row['filename'] . "'>
                             <img  src='../uploads/" . $row['filename'] . "' height='150px' width='200px' />
                         </a><br>
                         <label>" . $cut . "</label>
@@ -172,7 +174,7 @@ $count1 = mysqli_num_rows($result4);
                 }else{
 
                     echo "<div id='data' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-                        <a class='txtEditor' href='http://localhost:8081/project/uploads/" . $row['filename'] . "'>
+                        <a class='txtEditor' href='http://localhost:8081/finalproject/uploads/" . $row['filename'] . "'>
                             <img src='../img/docimg.png' height='150px' width='150px' />
                         </a><br>
                         <label>" . $cut . "</label>
@@ -192,17 +194,4 @@ $count1 = mysqli_num_rows($result4);
     </section>
 </section>
 <!--main content end-->
-<div class="text-right">
-    <div class="credits">
-        <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-
-        <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    --> </div>
-</div>
-</section>
-<!-- container section end -->
 </body>

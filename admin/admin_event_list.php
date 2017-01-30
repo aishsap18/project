@@ -1,14 +1,7 @@
 <?php
 include("../include/admin_master.php");
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="css/style.css"/>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.ui.shake.js"></script>
-</head>
+
 
 <!--main content start-->
 <section id="main-content">
@@ -25,11 +18,15 @@ include("../include/admin_master.php");
         <!-- page start-->
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table class="table table-striped input-lg">
-                <th>Sr. No.</th>
-                <th>Event Name</th>
-                <th>Description</th>
-
+            <table id="myTables" class="table">
+                <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
                 <?php
 
                 $sql = "SELECT * FROM dms_event WHERE parent_id = 0";
@@ -45,6 +42,7 @@ include("../include/admin_master.php");
                 }
 
                 ?>
+                </tbody>
             </table>
         </div>
 

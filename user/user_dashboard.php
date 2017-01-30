@@ -15,20 +15,21 @@ include("../include/user_master.php");
             </div>
         </div>
         <!-- page start-->
-
+        <div class="row">
+            <span class="label label-success">SELECT YOUR OPERATION</span>
+        </div>
+        <br>
         <div class="row">
             <a href="user_events.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box blue-bg">
-                        <i class="fa fa-cloud-download"></i>
+                    <div class="info-box-2 blue-bg">
                         <div><h3><b>Events</b></h3></div>
                     </div><!--/.info-box-->
                 </div><!--/.col--></a>
 
             <a href="user_shared_with_me.php">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="info-box brown-bg">
-                        <i class="fa fa-shopping-cart"></i>
+                    <div class="info-box-2 brown-bg">
                         <div><h3><b>Shared with me</b></h3></div>
                     </div><!--/.info-box-->
                 </div><!--/.col--></a>

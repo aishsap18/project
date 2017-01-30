@@ -8,15 +8,19 @@ if (isset($_SESSION['user_id'])) {
 else{
     header("location: ../index.php");
 }
+
+$query = "SELECT * FROM dms_profile WHERE user_id = '$userid'";
+$result = mysqli_query($db,$query);
+$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keyword" content="">
     <link rel="shortcut icon" href="../img/favicon.png">
 
     <title>Document Management System for Organization</title>
@@ -70,13 +74,12 @@ else{
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="../img/VSP-2.jpg" height="30" width="30">
+                                <img alt="" src="../img/<?php echo $row['picture']; ?>" height="30" width="30">
                             </span>
                         <span class="username"><?php echo $_SESSION['fullname']; ?></span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu extended logout">
-                        <div class="log-arrow-up"></div>
                         <li class="eborder-top">
                             <a href="../user/user_profile.php"><i class="icon_profile"></i> My Profile</a>
                         </li>
