@@ -10,6 +10,10 @@ $user = $_SESSION['user_id'];
 $query = "SELECT * FROM dms_profile WHERE user_id='$userid'";
 $result = mysqli_query($db, $query);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+$sql = "SELECT * FROM dms_users WHERE user_id='$userid'";
+$res = mysqli_query($db, $sql);
+$row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
 ?>
 <!--main content start-->
     <section id="main-content">
@@ -19,7 +23,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <h3 class="page-header"><i class="fa fa-user-md"></i> Profile</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="dashboard.php">Home</a></li>
-                        <li><i class="icon_documents_alt"></i>Pages</li>
                         <li><i class="fa fa-user-md"></i>Profile</li>
                     </ol>
                 </div>
@@ -30,14 +33,14 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="profile-widget profile-widget-info">
                         <div class="panel-body">
                             <div class="col-lg-2 col-sm-2">
-                                <h4><?php echo $row['fname']." ".$row['lname'];?></h4>
                                 <div class="follow-ava">
                                     <img src="../img/<?php echo $row['picture']; ?>" alt="">
                                 </div>
+                                <h4><?php echo $row['fname']." ".$row['lname'];?></h4>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info">
                                 <p><?php echo $row['status']; ?></p>
-                                <p>@username</p>
+                                <p>@<?php echo $row1['username']; ?></p>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 follow-info weather-category">
                                 <ul>
