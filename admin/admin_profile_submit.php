@@ -22,9 +22,5 @@ $status = $_POST['status'];
 $query = "UPDATE dms_profile SET fname = '$fname',lname = '$lname' ,abt_me = '$abt_me' ,bday = '$bday' ,email = '$email',mobile = '$mobile' ,facebook = '$facebook',twitter = '$twitter',degree = '$degree' ,status = '$status' WHERE user_id = '$user'";
 
 $result = mysqli_query($db, $query);
-if($result) {
-    header("Location:admin_profile.php");
-}else{
-    echo "Error while updating the profile. Please try again later";
-}
+echo "<script>alert('Profile Updated.'); location.href=\"../admin/admin_profile.php\"; </script>";
 ?>
