@@ -103,7 +103,11 @@ if(!empty($_POST['description']) && !empty($_FILES['fileToUpload']['name'])) {
 
 
     //echo "<h3 align='center'>Upload successful.</h3> <script>setTimeout(\"location.href = 'home.php';\",2500);</script>";
-    echo "<script>alert('Upload successful.'); </script>";
+    echo "<div id=\"dialog-message\" title='Successful'>
+   <p>
+    Files successfully uploaded
+  </p>
+</div>";
 }
 
 ?>

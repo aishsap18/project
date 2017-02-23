@@ -23,6 +23,7 @@ else{
 
     <!-- Bootstrap CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="../css/jquery.fancybox.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../css/jquery.fancybox-buttons.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../css/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
@@ -103,7 +104,7 @@ else{
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;" class="">
+                    <a href="javascript:" class="">
                         <i class="icon_documents_alt"></i>
                         <span>Events</span>
                         <span class="menu-arrow arrow_carrot-right"></span>
@@ -170,7 +171,8 @@ else{
 
 <!-- javascripts -->
 <script src="../js/jquery.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <!-- nice scroll -->
 <script src="../js/jquery.scrollTo.min.js"></script>
@@ -184,8 +186,19 @@ else{
     <script type="text/javascript" src="../js/jquery.fancybox-thumbs.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
     <script src="../js/image-picker.js"></script>
-
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        $( function() {
+            $( "#dialog-message" ).dialog({
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+        } );
+    </script>
     <script type="text/javascript">
         $(document).ready(function() {
             $(".various").fancybox({
